@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indicapps | Thoughtful Mobile Apps</title>
+  <meta name="description" content="Indicapps builds practical, faith-friendly and everyday mobile apps. Discover Life By Bible (iOS) and Indic Browser (Android)." />
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --text: #151515;
+      --muted: #596070;
+      --brand: #f1b500;
+      --brand-deep: #d48d00;
+      --line: #e7eaf0;
+      --ok: #0e9f6e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1100px 500px at 80% -20%, rgba(241, 181, 0, 0.14), transparent 65%),
+        radial-gradient(700px 400px at -10% 20%, rgba(241, 181, 0, 0.11), transparent 70%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    .wrap {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      background: rgba(247, 248, 251, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #ffd45d, #f1b500 58%, #d48900);
+      box-shadow: 0 8px 24px rgba(241, 181, 0, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover { background: #eff2f8; color: var(--text); }
+
+    .hero {
+      padding: 64px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 12px 32px rgba(18, 33, 61, 0.06);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-deep);
+      background: #fff8e7;
+      border: 1px solid #f7e3ab;
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
+
+    h1 {
+      font-size: clamp(1.9rem, 4.4vw, 3rem);
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 11px 14px;
+      border: 1px solid transparent;
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(145deg, #ffd45d, #f1b500);
+      color: #231a00;
+      box-shadow: 0 10px 24px rgba(241, 181, 0, 0.25);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      background: linear-gradient(160deg, #201705, #3a2a07 55%, #2f2308);
+      color: #fff;
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffd968, #f1b500 70%);
+      opacity: 0.92;
+    }
+
+    .hero-visual::before {
+      width: 330px;
+      height: 330px;
+      top: -138px;
+      right: -42px;
+    }
+
+    .hero-visual::after {
+      width: 230px;
+      height: 230px;
+      top: 36px;
+      right: 98px;
+      opacity: 0.74;
+    }
+
+    .hero-visual h2 {
+      position: relative;
+      z-index: 2;
+      margin-top: 150px;
+      font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+    }
+
+    .hero-visual p {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      color: rgba(255,255,255,.82);
+      max-width: 32ch;
+    }
+
+    .section {
+      padding: 8px 0 28px;
+    }
+
+    .section h2 {
+      font-size: clamp(1.35rem, 3.4vw, 2rem);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      margin: 0 0 20px;
+      max-width: 68ch;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .app-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+    }
+
+    .meta {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.83rem;
+      color: #394150;
+      background: #f6f8fc;
+      border: 1px solid #e6ebf3;
+      border-radius: 999px;
+      padding: 5px 10px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+    }
+
+    .app-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .app-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tiny-link {
+      font-size: 0.9rem;
+      color: #1d2b45;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 10px;
+      background: #fff;
+    }
+
+    .tiny-link:hover { border-color: #cfd6e3; }
+
+    .app-store-badge {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+
+    .app-store-badge img {
+      display: block;
+      height: 40px;
+      width: auto;
+    }
+
+    .placeholder-note {
+      margin-top: 10px;
+      color: #677083;
+      font-size: 0.84rem;
+    }
+
+    .privacy {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .privacy-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .privacy-item span { color: var(--muted); font-size: .95rem; }
+
+    .deploy-note {
+      margin-top: 18px;
+      color: #566077;
+      font-size: 0.92rem;
+    }
+
+    footer {
+      padding: 24px 0 42px;
+      color: #6a7284;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .apps-grid { grid-template-columns: 1fr; }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .card { padding: 22px; }
+
+      .hero-visual h2 { margin-top: 142px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Indicapps home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Indicapps</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#apps">Apps</a>
+        <a href="#privacy">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="card">
+          <span class="eyebrow">Mobile Software Studio</span>
+          <h1 id="hero-title">We build focused apps for everyday life.</h1>
+          <p class="lead">
+            Indicapps creates practical mobile products with clean UX and meaningful features.
+            Our portfolio currently includes a faith-focused reading app and a fast Android browser.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#apps">View Our Apps</a>
+            <a class="btn btn-secondary" href="#privacy">Privacy Policies</a>
+          </div>
+        </div>
+
+        <aside class="card hero-visual" aria-label="Design inspired by Life By Bible onboarding visuals">
+          <h2>Inspired by Life By Bible onboarding visuals</h2>
+          <p>
+            Warm gradients, soft circles, and simple typography inspired by the Figma onboarding direction.
+          </p>
+        </aside>
+      </div>
+      <p class="deploy-note">
+        Deployment note: this site is static HTML and ready for Cloudflare Pages with build command
+        <code>exit 0</code> and build output directory <code>.</code>.
+      </p>
+    </section>
+
+    <section id="apps" class="section" aria-labelledby="apps-title">
+      <h2 id="apps-title">Our Apps</h2>
+      <p class="section-sub">Simple products, clear purpose, and platform-specific experiences.</p>
+
+      <div class="apps-grid">
+        <article class="card app-card">
+          <h3>Life By Bible</h3>
+          <div class="meta"><span class="status-dot" aria-hidden="true"></span>iOS (App Store release)</div>
+          <p>
+            A scripture companion with daily passages, prayer flows, guided devotional reading,
+            and a conversational assistant experience.
+          </p>
+          <div class="app-links">
+            <a class="app-store-badge" href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener noreferrer" aria-label="App Store link placeholder for Life By Bible">
+              <img src="https://toolbox.marketingtools.apple.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1615334400" alt="Download on the App Store" />
+            </a>
+            <a class="tiny-link" href="/life-by-bible-privacy-policy.html">Life By Bible Privacy Policy</a>
+          </div>
+          <p class="placeholder-note">
+            Placeholder App Store URL is set. Replace the app ID after launch.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Indic Browser</h3>
+          <div class="meta"><span class="status-dot" aria-hidden="true"></span>Android (Google Play)</div>
+          <p>
+            Lightweight browsing experience for Android users with a familiar interface and dependable performance.
+          </p>
+          <div class="app-links">
+            <a class="tiny-link" href="https://play.google.com/store/apps/details?id=com.neew.browser" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
+            <a class="tiny-link" href="https://indicapps.com/privacy-policy.html" target="_blank" rel="noopener noreferrer">Indic Browser Privacy Policy</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="privacy" class="section" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">Privacy Policies</h2>
+      <p class="section-sub">Each app includes a dedicated privacy policy page for user transparency.</p>
+
+      <div class="privacy card">
+        <div class="privacy-item">
+          <div>
+            <strong>Life By Bible</strong>
+            <span> — iOS app privacy policy</span>
+          </div>
+          <a class="tiny-link" href="/life-by-bible-privacy-policy.html">Open</a>
+        </div>
+        <div class="privacy-item">
+          <div>
+            <strong>Indic Browser</strong>
+            <span> — Android app privacy policy</span>
+          </div>
+          <a class="tiny-link" href="https://indicapps.com/privacy-policy.html" target="_blank" rel="noopener noreferrer">Open</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span id="copyright"></span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} Indicapps.com. All rights reserved.`;
+  </script>
+</body>
+</html>
