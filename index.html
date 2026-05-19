@@ -7,13 +7,13 @@
   <meta name="description" content="Indicapps builds practical, faith-friendly and everyday mobile apps. Discover Life By Bible (iOS) and Indic Browser (Android)." />
   <style>
     :root {
-      --bg: #f7f8fb;
+      --bg: #f5f7fc;
       --surface: #ffffff;
-      --text: #151515;
-      --muted: #596070;
+      --text: #101828;
+      --muted: #4f5b70;
       --brand: #f1b500;
-      --brand-deep: #d48d00;
-      --line: #e7eaf0;
+      --brand-deep: #bc8300;
+      --line: #dde4f0;
       --ok: #0e9f6e;
     }
 
@@ -24,8 +24,8 @@
       font-family: "Segoe UI", "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1100px 500px at 80% -20%, rgba(241, 181, 0, 0.14), transparent 65%),
-        radial-gradient(700px 400px at -10% 20%, rgba(241, 181, 0, 0.11), transparent 70%),
+        radial-gradient(900px 420px at 95% -5%, rgba(43, 114, 255, 0.18), transparent 60%),
+        radial-gradient(820px 430px at -10% 22%, rgba(241, 181, 0, 0.16), transparent 65%),
         var(--bg);
       line-height: 1.55;
     }
@@ -40,7 +40,7 @@
       top: 0;
       z-index: 10;
       backdrop-filter: blur(8px);
-      background: rgba(247, 248, 251, 0.82);
+      background: rgba(245, 247, 252, 0.86);
       border-bottom: 1px solid var(--line);
     }
 
@@ -92,7 +92,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1fr 1fr;
       gap: 24px;
       align-items: stretch;
     }
@@ -102,7 +102,7 @@
       border: 1px solid var(--line);
       border-radius: 20px;
       padding: 28px;
-      box-shadow: 0 12px 32px rgba(18, 33, 61, 0.06);
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
     }
 
     .eyebrow {
@@ -169,39 +169,23 @@
     .hero-visual {
       position: relative;
       overflow: hidden;
-      min-height: 280px;
-      background: linear-gradient(160deg, #201705, #3a2a07 55%, #2f2308);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-image:
+        linear-gradient(180deg, rgba(8, 14, 31, 0.08) 10%, rgba(8, 14, 31, 0.86) 72%),
+        url("https://www.figma.com/api/mcp/asset/782216a5-87d5-4d48-b5c7-3fd230811c47");
+      background-size: cover;
+      background-position: center;
       color: #fff;
-    }
-
-    .hero-visual::before,
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffd968, #f1b500 70%);
-      opacity: 0.92;
-    }
-
-    .hero-visual::before {
-      width: 330px;
-      height: 330px;
-      top: -138px;
-      right: -42px;
-    }
-
-    .hero-visual::after {
-      width: 230px;
-      height: 230px;
-      top: 36px;
-      right: 98px;
-      opacity: 0.74;
     }
 
     .hero-visual h2 {
       position: relative;
       z-index: 2;
-      margin-top: 150px;
+      margin-top: 0;
+      margin-bottom: 8px;
       font-size: clamp(1.15rem, 2.8vw, 1.5rem);
     }
 
@@ -211,6 +195,31 @@
       margin: 0;
       color: rgba(255,255,255,.82);
       max-width: 32ch;
+    }
+
+    .hero-visual .highlight {
+      color: #f6c73f;
+    }
+
+    .hero-visual .feature-chips {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-visual .feature-chips span {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(8, 12, 24, 0.44);
+      font-size: 0.79rem;
+      color: rgba(255,255,255,.94);
+      padding: 5px 10px;
+      backdrop-filter: blur(4px);
     }
 
     .section {
@@ -320,12 +329,6 @@
 
     .privacy-item span { color: var(--muted); font-size: .95rem; }
 
-    .deploy-note {
-      margin-top: 18px;
-      color: #566077;
-      font-size: 0.92rem;
-    }
-
     footer {
       padding: 24px 0 42px;
       color: #6a7284;
@@ -343,8 +346,6 @@
       }
 
       .card { padding: 22px; }
-
-      .hero-visual h2 { margin-top: 142px; }
     }
   </style>
 </head>
@@ -378,17 +379,18 @@
           </div>
         </div>
 
-        <aside class="card hero-visual" aria-label="Design inspired by Life By Bible onboarding visuals">
-          <h2>Inspired by Life By Bible onboarding visuals</h2>
+        <aside class="card hero-visual" aria-label="Life By Bible iOS app preview using onboarding visual style">
+          <h2>Life By Bible for <span class="highlight">iOS</span></h2>
           <p>
-            Warm gradients, soft circles, and simple typography inspired by the Figma onboarding direction.
+            Daily scripture, devotional prayer, and AI-assisted spiritual conversations in one calm app experience.
           </p>
+          <div class="feature-chips" aria-hidden="true">
+            <span>Daily Verse</span>
+            <span>Prayer Journey</span>
+            <span>Faith Chat</span>
+          </div>
         </aside>
       </div>
-      <p class="deploy-note">
-        Deployment note: this site is static HTML and ready for Cloudflare Pages with build command
-        <code>exit 0</code> and build output directory <code>.</code>.
-      </p>
     </section>
 
     <section id="apps" class="section" aria-labelledby="apps-title">
