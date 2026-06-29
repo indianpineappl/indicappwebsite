@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Indicapps | Thoughtful Mobile Apps</title>
   <meta name="description" content="Indicapps builds practical, faith-friendly and everyday mobile apps. Discover Life By Bible (iOS) and Indic Browser (Android)." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23f1b500'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Indicapps | Thoughtful Mobile Apps" />
+  <meta property="og:description" content="Discover Life By Bible (iOS) and Indic Browser (Android). Practical mobile products with clean UX and meaningful features." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://indicapps.com" />
+  <meta property="og:image" content="https://indicapps.com/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Indicapps | Thoughtful Mobile Apps" />
+  <meta name="twitter:description" content="Discover Life By Bible (iOS) and Indic Browser (Android). Practical mobile products with clean UX." />
+  <meta name="twitter:image" content="https://indicapps.com/og-image.png" />
+
   <style>
     :root {
       --bg: #f5f7fc;
@@ -19,6 +34,10 @@
 
     * { box-sizing: border-box; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: "Segoe UI", "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
@@ -28,6 +47,8 @@
         radial-gradient(820px 430px at -10% 22%, rgba(241, 181, 0, 0.16), transparent 65%),
         var(--bg);
       line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .wrap {
@@ -35,12 +56,14 @@
       margin: 0 auto;
     }
 
+    /* Header */
     header {
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(8px);
-      background: rgba(245, 247, 252, 0.86);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(245, 247, 252, 0.88);
       border-bottom: 1px solid var(--line);
     }
 
@@ -60,7 +83,10 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: 0.2px;
+      transition: opacity 0.2s ease;
     }
+
+    .brand:hover { opacity: 0.85; }
 
     .brand-mark {
       width: 28px;
@@ -82,10 +108,12 @@
       font-size: 0.95rem;
       padding: 8px 10px;
       border-radius: 10px;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
     .nav-links a:hover { background: #eff2f8; color: var(--text); }
 
+    /* Hero */
     .hero {
       padding: 64px 0 40px;
     }
@@ -103,6 +131,12 @@
       border-radius: 20px;
       padding: 28px;
       box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 48px rgba(15, 23, 42, 0.12);
     }
 
     .eyebrow {
@@ -149,15 +183,21 @@
       font-size: 0.95rem;
       padding: 11px 14px;
       border: 1px solid transparent;
-      transition: transform .16s ease, box-shadow .16s ease;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.2s ease;
+      cursor: pointer;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-primary {
       background: linear-gradient(145deg, #ffd45d, #f1b500);
       color: #231a00;
       box-shadow: 0 10px 24px rgba(241, 181, 0, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(145deg, #ffe066, #f5be1a);
+      box-shadow: 0 12px 28px rgba(241, 181, 0, 0.32);
     }
 
     .btn-secondary {
@@ -166,6 +206,12 @@
       color: var(--text);
     }
 
+    .btn-secondary:hover {
+      border-color: #cfd6e3;
+      background: #fafbfc;
+    }
+
+    /* Hero Visual */
     .hero-visual {
       position: relative;
       overflow: hidden;
@@ -173,12 +219,65 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      background-image:
-        linear-gradient(180deg, rgba(8, 14, 31, 0.08) 10%, rgba(8, 14, 31, 0.86) 72%),
-        url("https://www.figma.com/api/mcp/asset/782216a5-87d5-4d48-b5c7-3fd230811c47");
-      background-size: cover;
-      background-position: center;
+      background:
+        radial-gradient(600px 300px at 80% 20%, rgba(241, 181, 0, 0.25), transparent 70%),
+        radial-gradient(500px 280px at 10% 80%, rgba(43, 114, 255, 0.18), transparent 70%),
+        linear-gradient(160deg, #0b1224 0%, #161d33 60%, #1c2340 100%);
       color: #fff;
+      padding: 28px;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+      pointer-events: none;
+    }
+
+    /* Decorative phone mockup */
+    .hero-visual .mockup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px;
+      height: 320px;
+      border-radius: 24px;
+      border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    }
+
+    .hero-visual .mockup::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 999px;
+    }
+
+    .hero-visual .mockup::after {
+      content: '';
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 32px;
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
     }
 
     .hero-visual h2 {
@@ -266,6 +365,7 @@
       height: 8px;
       border-radius: 50%;
       background: var(--ok);
+      box-shadow: 0 0 0 3px rgba(14, 159, 110, 0.18);
     }
 
     .app-card p {
@@ -277,6 +377,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      align-items: center;
     }
 
     .tiny-link {
@@ -287,27 +388,35 @@
       border-radius: 10px;
       padding: 8px 10px;
       background: #fff;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
     }
 
-    .tiny-link:hover { border-color: #cfd6e3; }
+    .tiny-link:hover {
+      border-color: #cfd6e3;
+      background: #f8f9fc;
+      transform: translateY(-1px);
+    }
 
-    .app-store-badge {
+    .app-store-badge,
+    .play-store-badge {
       display: inline-flex;
       align-items: center;
       text-decoration: none;
       border-radius: 10px;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
 
-    .app-store-badge img {
+    .app-store-badge:hover,
+    .play-store-badge:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    .app-store-badge img,
+    .play-store-badge img {
       display: block;
       height: 40px;
       width: auto;
-    }
-
-    .placeholder-note {
-      margin-top: 10px;
-      color: #677083;
-      font-size: 0.84rem;
     }
 
     .privacy {
@@ -325,17 +434,93 @@
       background: #fff;
       border-radius: 12px;
       padding: 12px 14px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .privacy-item:hover {
+      border-color: #c8d0e0;
+      background: #fafbfd;
     }
 
     .privacy-item span { color: var(--muted); font-size: .95rem; }
 
+    /* Footer */
     footer {
-      padding: 24px 0 42px;
-      color: #6a7284;
-      font-size: 0.9rem;
+      padding: 32px 0 42px;
       border-top: 1px solid var(--line);
       margin-top: 18px;
     }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      margin-bottom: 8px;
+    }
+
+    .footer-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 40ch;
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color: #4f5b70;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 6px 8px;
+      border-radius: 8px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+      background: #eff2f8;
+    }
+
+    .footer-copy {
+      color: #6a7284;
+      font-size: 0.85rem;
+      margin-top: 16px;
+    }
+
+    /* Entrance animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      opacity: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .animate-in-delay-1 { animation-delay: 0.1s; }
+    .animate-in-delay-2 { animation-delay: 0.2s; }
+    .animate-in-delay-3 { animation-delay: 0.3s; }
 
     @media (max-width: 900px) {
       .hero-grid,
@@ -346,6 +531,22 @@
       }
 
       .card { padding: 22px; }
+
+      .hero-visual { min-height: 320px; }
+
+      .hero-visual .mockup {
+        width: 120px;
+        height: 240px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-links { justify-content: center; }
+
+      .footer-desc { margin: 0 auto; }
     }
   </style>
 </head>
@@ -366,12 +567,12 @@
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
-        <div class="card">
+        <div class="card animate-in">
           <span class="eyebrow">Mobile Software Studio</span>
           <h1 id="hero-title">We build focused apps for everyday life.</h1>
           <p class="lead">
             Indicapps creates practical mobile products with clean UX and meaningful features.
-            Our portfolio currently includes a faith-focused reading app and a fast Android browser.
+            Our portfolio includes a faith-focused reading app and a fast Android browser.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#apps">View Our Apps</a>
@@ -379,7 +580,8 @@
           </div>
         </div>
 
-        <aside class="card hero-visual" aria-label="Life By Bible iOS app preview using onboarding visual style">
+        <aside class="card hero-visual animate-in animate-in-delay-1" aria-label="Life By Bible iOS app preview">
+          <div class="mockup" aria-hidden="true"></div>
           <h2>Life By Bible for <span class="highlight">iOS</span></h2>
           <p>
             Daily scripture, devotional prayer, and AI-assisted spiritual conversations in one calm app experience.
@@ -394,11 +596,11 @@
     </section>
 
     <section id="apps" class="section" aria-labelledby="apps-title">
-      <h2 id="apps-title">Our Apps</h2>
-      <p class="section-sub">Simple products, clear purpose, and platform-specific experiences.</p>
+      <h2 id="apps-title" class="animate-in">Our Apps</h2>
+      <p class="section-sub animate-in">Simple products, clear purpose, and platform-specific experiences.</p>
 
       <div class="apps-grid">
-        <article class="card app-card">
+        <article class="card app-card animate-in animate-in-delay-2">
           <h3>Life By Bible</h3>
           <div class="meta"><span class="status-dot" aria-hidden="true"></span>iOS (App Store release)</div>
           <p>
@@ -406,35 +608,34 @@
             and a conversational assistant experience.
           </p>
           <div class="app-links">
-            <a class="app-store-badge" href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener noreferrer" aria-label="App Store link placeholder for Life By Bible">
+            <a class="app-store-badge" href="https://apps.apple.com/app/id6774996641" target="_blank" rel="noopener noreferrer" aria-label="Download Life By Bible on the App Store">
               <img src="https://toolbox.marketingtools.apple.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1615334400" alt="Download on the App Store" />
             </a>
-            <a class="tiny-link" href="/life-by-bible-privacy-policy.html">Life By Bible Privacy Policy</a>
+            <a class="tiny-link" href="/life-by-bible-privacy-policy.html">Privacy Policy</a>
           </div>
-          <p class="placeholder-note">
-            Placeholder App Store URL is set. Replace the app ID after launch.
-          </p>
         </article>
 
-        <article class="card app-card">
+        <article class="card app-card animate-in animate-in-delay-3">
           <h3>Indic Browser</h3>
           <div class="meta"><span class="status-dot" aria-hidden="true"></span>Android (Google Play)</div>
           <p>
             Lightweight browsing experience for Android users with a familiar interface and dependable performance.
           </p>
           <div class="app-links">
-            <a class="tiny-link" href="https://play.google.com/store/apps/details?id=com.neew.browser" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
-            <a class="tiny-link" href="https://indicapps.com/privacy-policy.html" target="_blank" rel="noopener noreferrer">Indic Browser Privacy Policy</a>
+            <a class="play-store-badge" href="https://play.google.com/store/apps/details?id=com.neew.browser" target="_blank" rel="noopener noreferrer" aria-label="Get Indic Browser on Google Play">
+              <img src="https://play.google.com/intl/en_us/badges/static/images/en-us/badge-play-store.png" alt="Get it on Google Play" />
+            </a>
+            <a class="tiny-link" href="https://indicapps.com/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
           </div>
         </article>
       </div>
     </section>
 
     <section id="privacy" class="section" aria-labelledby="privacy-title">
-      <h2 id="privacy-title">Privacy Policies</h2>
-      <p class="section-sub">Each app includes a dedicated privacy policy page for user transparency.</p>
+      <h2 id="privacy-title" class="animate-in">Privacy Policies</h2>
+      <p class="section-sub animate-in">Each app includes a dedicated privacy policy page for user transparency.</p>
 
-      <div class="privacy card">
+      <div class="privacy card animate-in animate-in-delay-1">
         <div class="privacy-item">
           <div>
             <strong>Life By Bible</strong>
@@ -455,7 +656,23 @@
 
   <footer>
     <div class="wrap">
-      <span id="copyright"></span>
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand" href="#top" aria-label="Indicapps home">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>Indicapps</span>
+          </a>
+          <p class="footer-desc">Building practical mobile products with clean UX and meaningful features.</p>
+          <p class="footer-copy" id="copyright"></p>
+        </div>
+        <div class="footer-links" aria-label="Footer navigation">
+          <a href="mailto:contact@indicapps.com">Contact</a>
+          <a href="#apps">Our Apps</a>
+          <a href="#privacy">Privacy</a>
+          <a href="/life-by-bible-privacy-policy.html">Life By Bible Privacy</a>
+          <a href="https://indicapps.com/privacy-policy.html" target="_blank" rel="noopener noreferrer">Indic Browser Privacy</a>
+        </div>
+      </div>
     </div>
   </footer>
 
