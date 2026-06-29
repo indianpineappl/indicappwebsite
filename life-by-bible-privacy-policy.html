@@ -5,106 +5,235 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Life By Bible Privacy Policy | Indicapps</title>
   <meta name="description" content="Privacy Policy for the Life By Bible iOS app by Indicapps." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23f1b500'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --bg: #f8fafd;
-      --surface: #ffffff;
-      --text: #141821;
-      --muted: #5a6272;
-      --line: #e5eaf2;
+      --bg-deep: #020408;
+      --surface: rgba(255,255,255,0.02);
+      --surface-hover: rgba(255,255,255,0.05);
+      --text: #f0f2f8;
+      --text-dim: #8b92a8;
       --brand: #f1b500;
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: "Segoe UI", "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       color: var(--text);
-      background: var(--bg);
+      background: var(--bg-deep);
       line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .wrap {
-      width: min(860px, 92vw);
+    /* Ambient orbs */
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.4;
+    }
+
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(241,181,0,0.2), transparent 70%);
+      top: -10%; right: -5%;
+    }
+
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.15), transparent 70%);
+      bottom: -5%; left: -8%;
+    }
+
+    /* Nav */
+    header {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      padding: 0 24px;
+    }
+
+    .nav-glass {
+      max-width: 860px;
       margin: 0 auto;
-      padding: 32px 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
     }
 
-    .top {
-      margin-bottom: 18px;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #ffd45d, #f1b500 58%, #d48900);
+      box-shadow: 0 0 20px rgba(241, 181, 0, 0.4);
     }
 
     .back {
+      color: var(--text-dim);
       text-decoration: none;
-      color: #24314a;
-      font-size: .93rem;
-      border: 1px solid var(--line);
-      padding: 8px 11px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px 14px;
       border-radius: 10px;
-      background: #fff;
+      transition: all 0.25s ease;
+    }
+
+    .back:hover {
+      color: var(--text);
+      background: var(--surface-hover);
+    }
+
+    /* Content */
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 92%;
+      padding: 40px 0 60px;
     }
 
     .card {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 12px 28px rgba(24, 38, 65, 0.05);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
     }
 
-    h1, h2 {
-      line-height: 1.22;
-      margin: 0 0 10px;
-    }
-
-    h1 {
-      font-size: clamp(1.7rem, 3.6vw, 2.2rem);
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      margin-top: 22px;
-      font-size: clamp(1.04rem, 2.3vw, 1.2rem);
-    }
-
-    p, li {
-      color: #1f2838;
-      margin: 0 0 10px;
-    }
-
-    ul {
-      margin: 0 0 10px;
-      padding-left: 20px;
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03), transparent 60%);
+      pointer-events: none;
     }
 
     .meta {
-      display: inline-block;
-      margin: 0 0 10px;
-      font-size: 0.87rem;
-      color: #614600;
-      background: #fff6de;
-      border: 1px solid #f2e0a9;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--brand);
+      background: rgba(241, 181, 0, 0.08);
+      border: 1px solid rgba(241, 181, 0, 0.12);
       border-radius: 999px;
-      padding: 6px 10px;
+      padding: 5px 12px;
+      margin-bottom: 16px;
     }
+
+    h1 {
+      font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(1.1rem, 2.3vw, 1.3rem);
+      font-weight: 600;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    p, li {
+      color: var(--text-dim);
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    ul {
+      margin-bottom: 10px;
+      padding-left: 24px;
+    }
+
+    li { margin-bottom: 6px; }
 
     .muted {
-      color: var(--muted);
-      font-size: .95rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
     }
 
-    a { color: #143f8f; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      padding: 32px 0;
+    }
+
+    .footer-content {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 92%;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <div class="top">
-      <a class="back" href="/index.html">← Back to Indicapps</a>
-    </div>
+  <div class="ambient" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
 
+  <header>
+    <nav class="nav-glass" aria-label="Main navigation">
+      <a class="brand" href="/index.html" aria-label="Indicapps home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Indicapps</span>
+      </a>
+      <a class="back" href="/index.html">&larr; Back to Indicapps</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
     <article class="card">
-      <span class="meta">Life By Bible · iOS</span>
+      <span class="meta">Life By Bible &middot; iOS</span>
       <h1>Privacy Policy for Life By Bible</h1>
       <p class="muted"><strong>Effective date:</strong> May 19, 2026</p>
 
@@ -172,7 +301,7 @@
         <li>You can request privacy-related support, including data access or deletion where applicable.</li>
       </ul>
 
-      <h2>9. Children’s Privacy</h2>
+      <h2>9. Children's Privacy</h2>
       <p>
         Life By Bible is not directed to children under 13. If you believe a child has provided personal
         information, contact us so we can review and remove it where appropriate.
@@ -205,5 +334,15 @@
       </p>
     </article>
   </main>
+
+  <footer>
+    <div class="footer-content">
+      &copy; <span id="year"></span> Indicapps.com. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
